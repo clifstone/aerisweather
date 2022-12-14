@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Aeris Weather</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.aerisapi.com/sdk/js/latest/aerisweather.css"><meta name="viewport" content="width=device-width, initial-scale=1"><script defer src="main.js"></script></head>
+  <body>
+  <header class="siteheader">
+    <div class="siteheader__wrapper"></div>
+</header><div class="currentconditions">
+    <div class="currentconditions__wrapper fullsection maxwidth flexcolcenter">
+        <div class="currentconditions__grid" mod></div>
+    </div>
+</div><div class="forecast">
+    <div class="forecast__wrapper fullsection maxwidth flexcolcenter">
+        <div class="forecast__grid">
+            <h3>FORECASTS:</h3>
+            <div class="apicall">
+                <div class="apicall__wrapper">
+                    <h4>Obtain the 15-day forecast for Minneapolis, MN via latitude / longitude, with a midnight-to-midnight output format.</h4>
+                    <pre>
+    import AerisWeather from '@aerisweather/javascript-sdk';
+    window.addEventListener('load', () => {
+    
+        const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
+
+        const request = aeris.api();
+        request.endpoint('forecasts');
+        request.place('44.977753, -93.265015');
+        request.limit(15);
+        request.filter('daynight');
+        request.get().then((result) => {
+            const data = result.data[0];
+            console.log(data);
+        });
+    
+    });
+</pre>
+                </div>
+            </div>
+            <div class="apicall">
+                <div class="apicall__wrapper">
+                    <h4>Obtain the 15-day forecast for Minneapolis, MN, limiting the results to the date, weather and max temperature in Fahrenheit.</h4>
+                    <pre>
+import AerisWeather from '@aerisweather/javascript-sdk';
+window.addEventListener('load', () => {
+
+    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
+
+    const request = aeris.api();
+    request.endpoint('forecasts');
+    request.place('44.977753, -93.265015');
+    request.limit(15);
+    request.filter('daynight');
+    request.get().then((result) => {
+        const data = result.data[0];
+        console.log(data);
+    });
+
+});
+</pre>
+                </div>
+            </div>
+            <div class="apicall">
+                <div class="apicall__wrapper">
+                    <h4>Obtain the forecast for this weekend (Saturday / Sunday) for New York, NY.</h4>
+                    <pre>
+import AerisWeather from '@aerisweather/javascript-sdk';
+window.addEventListener('load', () => {
+
+    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
+
+    const request = aeris.api();
+    request.endpoint('forecasts');
+    request.place('new+york,ny');
+    request.from('saturday');
+    request.to('sunday');
+    request.get().then((result) => {
+        const data = result.data[0].periods;
+        console.log(data);
+    });
+
+});
+</pre>
+                </div>
+            </div>
+            <h3>HISTORICAL:</h3>
+            <div class="apicall">
+                <div class="apicall__wrapper">
+                    <h4>Obtain the historical conditions in hourly format for Minneapolis, MN on March 3, 2020.</h4>
+                    <pre>
+import AerisWeather from '@aerisweather/javascript-sdk';
+
+window.addEventListener('load', () => {
+    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
+    const request = aeris.api();
+    request.endpoint('conditions');
+    request.place('minneapolis,mn');
+    request.filter('daynight');
+    request.from('03/03/2020');
+    request.to('+24hour');
+    request.get().then((result) => {
+        const data = result.data[0];
+        console.log(data);
+    });
+
+});
+</pre>
+                </div>
+            </div>
+            <div class="apicall">
+                <div class="apicall__wrapper">
+                    <h4>Obtain the historical in daily summary format for Minneapolis, MN on March 3, 2020.</h4>
+                    <pre>
+import AerisWeather from '@aerisweather/javascript-sdk';
+
+window.addEventListener('load', () => {
+    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
+    const request = aeris.api();
+    request.endpoint('conditions/summary');
+    request.place('minneapolis,mn');
+    request.filter('day');
+    request.from('03/03/2020');
+    request.to('03/03/2020');
+    request.get().then((result) => {
+        const data = result.data[0];
+        console.log(data);
+    });
+
+});
+</pre>
+                </div>
+            </div>
+
+            <h3>ALERTS:</h3>
+
+            <div class="apicall">
+                <div class="apicall__wrapper">
+                    <h4>Obtain any active advisories for Minneapolis, MN (NOTE: possible there are none).</h4>
+                    <pre>
+import AerisWeather from '@aerisweather/javascript-sdk';
+
+window.addEventListener('load', () => {
+    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
+    const request = aeris.api();
+    request.endpoint('alerts');
+    request.place('minneapolis,mn');
+    request.filter('advisory');
+    request.get().then((result) => {
+        const data = result.data[0];
+        console.log(data);
+    });
+
+});
+</pre>
+                </div>
+            </div>
+            <div class="apicall">
+                <div class="apicall__wrapper">
+                    <h4>Obtain active advisories for a location verified as having an active advisory.</h4>
+                    <pre>
+import AerisWeather from '@aerisweather/javascript-sdk';
+
+window.addEventListener('load', () => {
+    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
+    const request = aeris.api();
+    request.endpoint('alerts');
+    request.place('missoula,mt');
+    request.filter('advisory');
+    request.get().then((result) => {
+        const data = result.data[0];
+        console.log(data);
+    });
+
+});
+</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><div class="staticmap">
+    <div class="staticmap__wrapper fullsection maxwidth flexcolcenter">
+        <div id="staticmap" class="staticmap__grid" staticmap></div>
+        <div class="apicall">
+            <div class="apicall__wrapper">
+                <h4>Map that is 600px x 600px, centered on Minneapolis, MN, zoom level 5, with flat base map, global radar, and admin overlay.</h4>
+                <pre>
+import MapRequest from '@aerisweather/javascript-sdk/dist/network/maps/MapRequest';
+
+window.addEventListener('load', () => {
+    let staticmap = document.querySelector('[staticmap]');
+
+    let maplayers = 'flat,radar,admin';
+    let mapcenter = 'minneapolis,mn';
+    let mapw = 600;
+    let maph = 600;
+    let mapz = 5;
+    let maptile = 256;
+    let mapcols = Math.ceil(mapw / maptile);
+    let maprows = Math.ceil(maph / maptile);
+
+    let mapunits = mapcols * maprows;
+
+    console.log(mapunits);
+
+    const request = new MapRequest({
+        client: {
+            id: 'KIP_ID',
+            secret: 'KIP_SECRET'
+        }
+    });
+
+    request.layers(maplayers);
+    request.center(mapcenter);
+    request.zoom(mapz);
+    request.size(mapw, maph);
+    request.get().then((result) => {
+        console.log(result.image);
+        staticmap.insertAdjacentElement('afterbegin', result.image);
+        const estunits = (
+            estunits HTML here
+        );
+        staticmap.insertAdjacentHTML('beforeend', estunits);
+    });
+
+});
+</pre>
+            </div>
+        </div>
+    </div>
+</div><div class="interactivemap">
+    <div class="interactivemap__wrapper fullsection maxwidth flexcolcenter">
+        <div id="interactivemap" class="interactivemap__grid" interactivemap></div>
+        <div class="apicall">
+            <div class="apicall__wrapper">
+                <h4>Map that is 600px x 600px, centered on Minneapolis, MN, zoom level 5, with flat base map, global radar, and admin overlay.</h4>
+                <pre>
+import AerisWeather from '@aerisweather/javascript-sdk';
+
+window.addEventListener('load', () => {
+    let interactivemap = document.querySelector('[interactivemap]');
+
+    let maplayers = 'alerts,temperatures,radar';
+    let mapcenter = {
+        lat: 39.099728,
+        lon: -94.578568
+    }
+    let mapw = 600;
+    let maph = 600;
+    let mapz = 4;
+    let maptile = 256;
+    let mapcols = Math.ceil(mapw / maptile);
+    let maprows = Math.ceil(maph / maptile);
+
+    let mapunits = mapcols * maprows;
+
+    const aeris = new AerisWeather('ZsXEQGZcQQ297GNvUPbEw', 'qg4V7TY719k33od8qlRPwVFGKgKwawJVZmZPFHDI');
+
+    aeris.views().then((views) => {
+        const map = new views.Map(interactivemap, {
+            map: {
+                strategy: 'leaflet',
+                layers: {
+                    data: maplayers
+                },
+                center: mapcenter,
+                zoom: mapz,
+                size: {
+                    width: mapw,
+                    height: maph
+                },
+                timeline: {
+                    from: -2 * 3600,
+                    to: 0
+                }
+            }
+        });
+    });
+
+    const estunits = (
+        estunits HTML here
+    );
+
+    document.querySelector('.interactivemap__wrapper').insertAdjacentHTML('beforeend', estunits);
+
+});
+</pre>
+            </div>
+        </div>
+    </div>
+</div><header class="sitefooter">
+    <div class="sitefooter__wrapper"></div>
+</header></body>
+</html>

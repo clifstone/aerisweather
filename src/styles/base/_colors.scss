@@ -1,0 +1,15 @@
+:root {
+    --black: #222222;
+    --white: #FFFFFF;
+    --basefontcolor: var(--black);
+}
+
+body {
+    color: var(--basefontcolor)
+}
+
+.siteheader,
+.sitefooter {
+    color: var(--white);
+    background-color: var(--black);
+}

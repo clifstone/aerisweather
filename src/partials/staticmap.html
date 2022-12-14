@@ -1,0 +1,51 @@
+<div class="staticmap">
+    <div class="staticmap__wrapper fullsection maxwidth flexcolcenter">
+        <div id="staticmap" class="staticmap__grid" staticmap></div>
+        <div class="apicall">
+            <div class="apicall__wrapper">
+                <h4>Map that is 600px x 600px, centered on Minneapolis, MN, zoom level 5, with flat base map, global radar, and admin overlay.</h4>
+                <pre>
+import MapRequest from '@aerisweather/javascript-sdk/dist/network/maps/MapRequest';
+
+window.addEventListener('load', () => {
+    let staticmap = document.querySelector('[staticmap]');
+
+    let maplayers = 'flat,radar,admin';
+    let mapcenter = 'minneapolis,mn';
+    let mapw = 600;
+    let maph = 600;
+    let mapz = 5;
+    let maptile = 256;
+    let mapcols = Math.ceil(mapw / maptile);
+    let maprows = Math.ceil(maph / maptile);
+
+    let mapunits = mapcols * maprows;
+
+    console.log(mapunits);
+
+    const request = new MapRequest({
+        client: {
+            id: 'KIP_ID',
+            secret: 'KIP_SECRET'
+        }
+    });
+
+    request.layers(maplayers);
+    request.center(mapcenter);
+    request.zoom(mapz);
+    request.size(mapw, maph);
+    request.get().then((result) => {
+        console.log(result.image);
+        staticmap.insertAdjacentElement('afterbegin', result.image);
+        const estunits = (
+            estunits HTML here
+        );
+        staticmap.insertAdjacentHTML('beforeend', estunits);
+    });
+
+});
+</pre>
+            </div>
+        </div>
+    </div>
+</div>

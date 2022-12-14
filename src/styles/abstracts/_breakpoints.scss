@@ -1,0 +1,8 @@
+$breakpoints:( small: 375px, mediumsmall: 667px, medium: 768px, mediumlarge: 1024px, largesmall: 1180px, large: 1366px, larger: 1680px, largest: 1920px);
+//
+@mixin mediaq($key) {
+    $size: map-get($breakpoints, $key);
+    @media (min-width: $size) {
+        @content;
+    }
+}

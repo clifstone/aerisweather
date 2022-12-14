@@ -1,0 +1,88 @@
+@use '../abstracts/' as *;
+//
+:root {
+    --genfontfam: 'Poppins', sans-serif;
+    --genfontsize: 1.1rem;
+    --genfontlineheight: 1.3;
+    --headlinefontfam: var(--genfontfam);
+    --headlinelineheight: 1.7;
+    --lightfontweight: 300;
+    --regfontweight: 400;
+    --medfontweight: 500;
+    --semiboldfontweight: 600;
+    --boldfontweight: 700;
+    --extraboldfontweight: 800;
+    --blackfontweight: 900;
+    --h1size: 2.5rem;
+    --h2size: 2rem;
+    --h3size: 1.5rem;
+    --h4size: 0.9rem;
+    --h5size: 0.8rem;
+    --h6size: 0.6rem;
+    --smallsize: 0.6rem;
+}
+
+html,
+body {
+    font-family: var(--genfontfam);
+    font-size: var(--genfontsize);
+    font-weight: var(--regfontweight);
+    line-height: var(--genfontlineheight);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--headlinefontfam);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: var(--boldfontweight);
+    line-height: var(--headlinelineheight);
+}
+
+h5,
+h6 {
+    font-weight: var(--regfontweight);
+}
+
+h1 {
+    font-size: var(--h1size);
+}
+
+h2 {
+    font-size: var(--h2size);
+}
+
+h3 {
+    font-size: var(--h3size);
+}
+
+h4 {
+    font-size: var(--h4size);
+}
+
+h5 {
+    font-size: var(--h5size);
+}
+
+h6 {
+    font-size: var(--h6size);
+}
+
+small {
+    font-size: var(--smallsize);
+}
+
+strong {
+    font-weight: var(--boldfontweight);
+}

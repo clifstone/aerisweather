@@ -1,0 +1,14 @@
+@use './breakpoints' as *;
+//
+:root {
+    //genvars
+    --siteheaderheight: 3.125rem;
+    --fullsectionheight: calc(100vh - var(--siteheaderheight));
+    //aspect ratios
+    --sixnine: 56.25%;
+    //max-width
+    --mw: 40rem;
+    @include mediaq(medium) {
+        --siteheaderheight: 5rem;
+    }
+}
