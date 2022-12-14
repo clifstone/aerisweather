@@ -2,7 +2,7 @@
 Clone the project
 <pre>git clone https://github.com/clifstone/aerisweather.git</pre>
 
-Install dependencies
+Install dependencies:<br>
 Open a terminal within the cloned folder or cd into it -> THEN RUN THE COMMAND:
 <pre>npm i</pre>
 
