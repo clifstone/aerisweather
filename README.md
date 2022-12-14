@@ -3,10 +3,13 @@
 <pre>git clone https://github.com/clifstone/aerisweather.git</pre>
 
 <strong>Install dependencies:</strong><br>
-Open a terminal within the cloned folder or cd into it -> THEN RUN THE COMMAND:
+Open a terminal within the cloned folder or cd into it then, -> RUN THE COMMAND:
 <pre>npm i</pre>
 
-Once that is done, while in the same folder -> RUN THE COMMAND:
+Once that is done, while your terminal is still open, -> RUN THE COMMAND:
+<pre>cd aerisweather</pre>
+
+After you've cd'd into the folder, -> RUN THE COMMAND:
 <pre>npm run build</pre>
 
 After you run the build, navigate to the /dist folder. From there, you should be able to open the index.html file in any browser. A good double-click on it should do the trick ;)
