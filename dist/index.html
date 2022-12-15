@@ -47,18 +47,31 @@
                     <h4>Obtain the 15-day forecast for Minneapolis, MN, limiting the results to the date, weather and max temperature in Fahrenheit.</h4>
                     <pre>
 import AerisWeather from '@aerisweather/javascript-sdk';
+
 window.addEventListener('load', () => {
 
-    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
+    let forecastwrapper = document.querySelector('[fore]');
 
+    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
     const request = aeris.api();
     request.endpoint('forecasts');
-    request.place('44.977753, -93.265015');
+    request.place('minneapolis,mn');
     request.limit(15);
-    request.filter('daynight');
+    request.fields('periods.dateTimeISO, periods.weather, periods.maxTempF');
     request.get().then((result) => {
-        const data = result.data[0];
+        const data = result.data[0].periods;
         console.log(data);
+        data.forEach(i => {
+            let thedate = i.dateTimeISO.slice(0, 10);
+            const formatHTML = (
+                `<section class="forecast__section">
+                    <span class="forecast__ind forecast__ind--date">DATE VAR HERE</span>
+                    <span class="forecast__ind forecast__ind--weather">WEATHER VAR HERE</span>
+                    <span class="forecast__ind forecast__ind--maxtemp">MAXTEMPF VAR HERE&deg;</span>
+                </section>`
+            )
+            forecastwrapper.insertAdjacentHTML('beforeend', formatHTML);
+        });
     });
 
 });

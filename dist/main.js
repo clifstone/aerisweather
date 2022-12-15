@@ -476,10 +476,11 @@ window.addEventListener('load', () => {
 
     let modwrapper = document.querySelector('[mod]');
     const aeris = new _aerisweather_javascript_sdk__WEBPACK_IMPORTED_MODULE_0__["default"]('ZsXEQGZcQQ297GNvUPbEw', 'qg4V7TY719k33od8qlRPwVFGKgKwawJVZmZPFHDI');
+
     aeris.api().endpoint('observations').place('minneapolis,mn').get().then((result) => {
         const place = result.data;
         const data = result.data.ob;
-        console.log(data);
+        //console.log(data);
         const modheader = (
             `<header class="currentconditions__header mod__header flexcol gap8">
                 <span class="currentconditions__label">Current Conditions For:</span>
