@@ -64,11 +64,7 @@ window.addEventListener('load', () => {
         data.forEach(i => {
             let thedate = i.dateTimeISO.slice(0, 10);
             const formatHTML = (
-                `<section class="forecast__section">
-                    <span class="forecast__ind forecast__ind--date">DATE VAR HERE</span>
-                    <span class="forecast__ind forecast__ind--weather">WEATHER VAR HERE</span>
-                    <span class="forecast__ind forecast__ind--maxtemp">MAXTEMPF VAR HERE&deg;</span>
-                </section>`
+                HTML TO PUSH HERE - SEE TEXT DOC
             )
             forecastwrapper.insertAdjacentHTML('beforeend', formatHTML);
         });
@@ -271,7 +267,7 @@ window.addEventListener('load', () => {
 
     let mapunits = mapcols * maprows;
 
-    const aeris = new AerisWeather('ZsXEQGZcQQ297GNvUPbEw', 'qg4V7TY719k33od8qlRPwVFGKgKwawJVZmZPFHDI');
+    const aeris = new AerisWeather('KIP_ID', 'KIP_SECRET');
 
     aeris.views().then((views) => {
         const map = new views.Map(interactivemap, {
